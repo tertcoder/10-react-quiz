@@ -9,6 +9,7 @@ import Question from "./Question";
 
 const initialState = {
   questions: [],
+
   // 'loading', 'error', 'ready', 'active', 'finished'
   status: "loading",
 };
@@ -52,14 +53,13 @@ export default function App() {
   return (
     <div className="app">
       <Header />
-
       <Main>
         {status === "loading" && <Loader />}
         {status === "error" && <Error />}
-        {status === "active" && (
+        {status === "ready" && (
           <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
         )}
-        {status === "ready" && <Question dispatch={dispatch} />}
+        {status === "active" && <Question />}
       </Main>
     </div>
   );
